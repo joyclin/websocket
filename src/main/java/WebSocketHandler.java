@@ -4,7 +4,6 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import org.springframework.aop.support.AopUtils;
 
 /**
  * @author joyce
@@ -22,13 +21,11 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 
   @Override
   public void channelActive(ChannelHandlerContext ctx) throws Exception {
-    System.out.println("加入链接");
     channels.add(ctx.channel());
   }
 
   @Override
   public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-    System.out.println("断开");
     channels.remove(ctx.channel());
   }
 
